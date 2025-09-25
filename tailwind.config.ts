@@ -1,17 +1,5 @@
-import { defineConfig } from 'vite'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
-
-export default defineConfig({
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
-  },
-})
-
-// Tailwind configuration as an object
-export const tailwindConfig = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -20,44 +8,6 @@ export const tailwindConfig = {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
-      },
-      colors: {
-        primary: {
-          50: '#f0f4ff',
-          100: '#e0e8ff',
-          200: '#c7d5fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#667eea',
-          600: '#5a67d8',
-          700: '#4c51bf',
-          800: '#434190',
-          900: '#3730a3',
-        },
-        secondary: {
-          50: '#fef7ff',
-          100: '#fdeeff',
-          200: '#fbddfe',
-          300: '#f7bbfc',
-          400: '#f093fb',
-          500: '#e879f9',
-          600: '#d946ef',
-          700: '#c026d3',
-          800: '#a21caf',
-          900: '#86198f',
-        },
-        accent: {
-          50: '#f0fdff',
-          100: '#ccfbff',
-          200: '#99f6ff',
-          300: '#4facfe',
-          400: '#06b6d4',
-          500: '#0891b2',
-          600: '#0e7490',
-          700: '#155e75',
-          800: '#164e63',
-          900: '#0c4a6e',
-        },
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
@@ -93,9 +43,6 @@ export const tailwindConfig = {
       boxShadow: {
         'magical': '0 10px 40px rgba(102, 126, 234, 0.3)',
         'glow': '0 0 20px rgba(245, 87, 108, 0.4)',
-      },
-      backdropBlur: {
-        xs: '2px',
       },
     },
   },

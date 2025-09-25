@@ -36,7 +36,11 @@ const IdeaCard = ({ idea, button = true }: { idea: Idea, button?: boolean }) => 
 
         {/* Content */}
         <div className="flex-1 mb-6">
-          <p className="text-white/80 leading-relaxed line-clamp-3">
+          <p className="text-white/80 leading-relaxed overflow-hidden" style={{ 
+            display: '-webkit-box',
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical' as const
+          }}>
             {idea.summary}
           </p>
         </div>
