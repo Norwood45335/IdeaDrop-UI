@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
 import { fetchIdeas } from '@/api/ideas'
 import IdeaCard from '@/components/IdeaCard'
-import { Lightbulb, Grid, Sparkles, Search, Filter } from 'lucide-react'
+import { Lightbulb, Grid, Sparkles, Search } from 'lucide-react'
 import { useState } from 'react'
 
 const ideasQueryOptions = () => queryOptions({

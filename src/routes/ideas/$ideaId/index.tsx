@@ -7,7 +7,7 @@ import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { queryOptions, useSuspenseQuery, useMutation } from '@tanstack/react-query'
 import { fetchIdea, deleteIdea } from '@/api/ideas'
 import { useAuth } from '@/context/AuthContext'
-import { ArrowLeft, Calendar, Tag, Edit, Trash2, User, Sparkles, AlertTriangle, Eye } from 'lucide-react'
+import { ArrowLeft, Calendar, Tag, Edit, Trash2, User, Sparkles, Eye } from 'lucide-react'
 import FloatingBrain from '@/components/FloatingBrain'
 
 const ideaQueryOptions = (ideaId:string) => queryOptions({
