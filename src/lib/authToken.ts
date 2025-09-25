@@ -1,6 +1,6 @@
 let accessToken: string | null = null;
 export const setStoredAccessToken = (token: string | null) => {
-    accessToken = token;
-}
+  accessToken = token;
+};
 
-export const getStoredAccessToken = () => accessToken
+export const getStoredAccessToken = () => accessToken;

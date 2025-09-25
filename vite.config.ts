@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import viteReact from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import viteReact from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import { resolve } from 'node:path';
 
 // https://vitejs.dev/config/
@@ -22,13 +22,13 @@ export default defineConfig({
   },
   server: {
     hmr: {
-      overlay: false
+      overlay: false,
     },
     host: true,
-    port: 3000
+    port: 3000,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', '@tanstack/react-router', '@tanstack/react-query']
+    include: ['react', 'react-dom', '@tanstack/react-router', '@tanstack/react-query'],
   },
   build: {
     rollupOptions: {
@@ -36,9 +36,9 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['@tanstack/react-router'],
-          query: ['@tanstack/react-query']
-        }
-      }
-    }
-  }
-})
+          query: ['@tanstack/react-query'],
+        },
+      },
+    },
+  },
+});

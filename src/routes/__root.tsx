@@ -4,6 +4,8 @@ import { HeadContent, Link, Outlet, createRootRouteWithContext } from '@tanstack
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { QueryClient } from '@tanstack/react-query'
 import Header from '@/components/Header'
+import { Home, Sparkles } from 'lucide-react'
+import FloatingBrain from '@/components/FloatingBrain'
 
 //passed object with head and component properties in earlier example
 
@@ -18,7 +20,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: 'Share, explore and build on the best startup ideas and side hustles'
       },
       {
-        title: 'IdeaDrop - Your Idea Hub',
+        title: 'IdeaDrop - Your Bright Idea Hub',
       },
     ]
   }),
@@ -28,13 +30,11 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootLayout() {
   return (
-    <div className='min-h-screen bg-gray-100 flex flex-col'>
+    <div className='min-h-screen flex flex-col gradient-primary'>
       <HeadContent />
       <Header />
-      <main className="flex justify-center p-6">
-        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-8">
-          <Outlet />
-        </div>
+      <main className="flex-1">
+        <Outlet />
       </main>
       {process.env.NODE_ENV === 'development' && <TanStackRouterDevtools />}
     </div>
@@ -43,14 +43,29 @@ function RootLayout() {
 
 function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center text-center py-20">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">
-        404
-      </h1>
-      <p className="text-lg text-gray-600 mb-6">
-        oops, The page you are looking for doesn't exist
-      </p>
-      <Link className='px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition' to='/'>← Go Back Home</Link>
+    <div className="min-h-screen flex flex-col items-center justify-center text-center py-20 px-6">
+      <div className="glass-effect p-12 rounded-3xl shadow-magical max-w-md animate-bounce-in">
+        <div className="mb-6">
+          <FloatingBrain size="md" />
+        </div>
+        <h1 className="text-6xl font-bold text-white mb-4 animate-sparkle">
+          404
+        </h1>
+        <h2 className="text-2xl font-bold text-white mb-4">
+          Idea Not Found!
+        </h2>
+        <p className="text-lg text-white/80 mb-8">
+          Oops! Looks like this bright idea escaped into the digital void. Let's get you back to finding amazing ideas.
+        </p>
+        <Link 
+          className='gradient-accent text-white font-bold px-8 py-4 rounded-full hover-lift hover-glow transition-all duration-300 shadow-magical inline-flex items-center space-x-2' 
+          to='/'
+        >
+          <Home className="w-5 h-5" />
+          <span>Back to Ideas</span>
+          <Sparkles className="w-5 h-5" />
+        </Link>
+      </div>
     </div>
   )
 }
