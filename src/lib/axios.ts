@@ -17,7 +17,9 @@ const api = axios.create({
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
+    'Accept': 'application/json',
   },
+  timeout: 10000, // 10 second timeout
 });
 
 // Attach token on refresh
@@ -33,6 +35,12 @@ api.interceptors.request.use((config: any) => {
 api.interceptors.response.use(
   (res: any) => res,
   async (error: any) => {
+    // Handle CORS errors
+    if (error.code === 'ERR_NETWORK' || error.message?.includes('CORS')) {
+      console.error('CORS or Network Error:', error);
+      return Promise.reject(new Error('Unable to connect to the server. Please check your internet connection.'));
+    }
+
     const originalRequest = error.config;
     if (
       error.response?.status === 401 &&
@@ -49,6 +57,8 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (err) {
         console.error('Refresh token failed', err);
+        // Clear stored tokens on refresh failure
+        setStoredAccessToken(null);
       }
     }
     return Promise.reject(error);
