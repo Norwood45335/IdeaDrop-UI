@@ -6,6 +6,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { AuthProvider } from './context/AuthContext.tsx';
+import { keepAliveService } from './lib/keepAlive.ts';
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
@@ -54,6 +55,9 @@ if (rootElement && !rootElement.innerHTML) {
       </QueryClientProvider>
     </AuthProvider>
   );
+
+  // Start keep-alive service to prevent backend from spinning down
+  keepAliveService.start();
 }
 
 // If you want to start measuring performance in your app, pass a function
